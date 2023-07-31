@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="/style.css" />
+    <script src="/petite-vue.js" defer init></script>
+    <script>
+      function allTags() {
+        const tagNames = Array.from(
+          new Set(
+            Array.from(document.querySelectorAll(".tags li"))
+              .map((e) => e.innerText)
+              .filter((n) => n[0] != "{") // Don't grab Vue templates
+          )
+        ).sort();
+        return tagNames;
+      }
+    </script>
+  </head>
+  <body>
+    <div id="background">
+      <div id="splash1"></div>
+      <div id="splash2"></div>
+      <div id="splash3"></div>
+      <div id="splash4"></div>
+    </div>
+    <main>
+      <header>
+        <div id="header">
+          <h1>Stuff</h1>
+          <h2>from Justin Chung Clark</h2>
+        </div>
+        <nav>
+          <ul>
+            <li><a href="/index.html">About</a></li>
+            <li><a href="/projects.html">Projects</a></li>
+            <li><a href="/hot_takes.html">Hot Takes</a></li>
+            <li><a href="/blog.html">Blog</a></li>
+            <li><a href="/contact.html">Contact</a></li>
+          </ul>
+        </nav>
+      </header>
+<article>
+  <h1>Hot Takes</h1>
+  <p>
+    I don't really use social media, and I don't blog much, so I blast my dumb
+    ideas out into the world in this section.
+  </p>
+  <ul>
+    <li>
+      I think most of the projects looking to do good in the world aren't in a
+      place where machine learning will do them any good.
+    </li>
+    <li>I worry about technology as a driver of inequality.</li>
+    <li>
+      I think quantitative evidence is undervalued by most and overvalued by
+      some. I think overvaluing it is probably the bigger mistake.
+    </li>
+    <li>
+      I'm scared by the fact that things are easier to break than they are to
+      build.
+    </li>
+    <li>
+      I think the vast majority of people are good. I think a lot of those
+      people are operating within systems of perverse incentives.
+    </li>
+    <li>
+      I voted for Ross Perot when I was eight because I was swayed by the
+      mainstream media narrative that he had funny ears.
+    </li>
+    <li>
+      I think most puns are annoying, but some are good, eg "it's impossible to
+      explain puns to kleptomaniacs because they take everything literally."
+    </li>
+    <li>I believe logical quotation is correctly named.</li>
+    <li>
+      I think complexity should induce a lot more humility than it tends to.
+    </li>
+    <li>
+      I think gendered pronouns are as useful as gendered nouns (i.e. not
+      useful).
+    </li>
+    <li>
+      Something about quantifying uncertainty feels oxymoronic and I like it."on
+      a scale from 1 to 10, how bad are you at numbers?"
+    </li>
+    <li>I think isolation and specialization are rending us at the joints.</li>
+    <li>I think the slippery slope argument is a slippery slope.</li>
+    <li>I consume more than I produce.</li>
+  </ul>
+</article>
+    </main>
+  </body>
+</html>

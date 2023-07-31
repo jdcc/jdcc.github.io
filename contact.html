@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="/style.css" />
+    <script src="/petite-vue.js" defer init></script>
+    <script>
+      function allTags() {
+        const tagNames = Array.from(
+          new Set(
+            Array.from(document.querySelectorAll(".tags li"))
+              .map((e) => e.innerText)
+              .filter((n) => n[0] != "{") // Don't grab Vue templates
+          )
+        ).sort();
+        return tagNames;
+      }
+    </script>
+  </head>
+  <body>
+    <div id="background">
+      <div id="splash1"></div>
+      <div id="splash2"></div>
+      <div id="splash3"></div>
+      <div id="splash4"></div>
+    </div>
+    <main>
+      <header>
+        <div id="header">
+          <h1>Stuff</h1>
+          <h2>from Justin Chung Clark</h2>
+        </div>
+        <nav>
+          <ul>
+            <li><a href="/index.html">About</a></li>
+            <li><a href="/projects.html">Projects</a></li>
+            <li><a href="/hot_takes.html">Hot Takes</a></li>
+            <li><a href="/blog.html">Blog</a></li>
+            <li><a href="/contact.html">Contact</a></li>
+          </ul>
+        </nav>
+      </header>
+<article>
+  <h1>Contact Me</h1>
+  <p>Questions, comments, screeds, tirades?</p>
+  <dl>
+    <dt>Web (here)</dt>
+    <dd>
+      <a href="https://justinchungclark.com">justinchungclark.com</a>
+      or
+      <a href="https://unregiste.red">unregiste.red</a>
+      or
+      <a href="https://veryfake.website">veryfake.website</a>
+    </dd>
+    <dt>Email</dt>
+    <dd>
+      <a href="mailto:NotJustinChungClark@gmail.com"
+        >NotJustinChungClark@gmail.com</a
+      >
+      (but remove the "Not")
+    </dd>
+    <dt>Phone</dt>
+    <dd>
+      +1 592-887-2293 (but add 1 modulo 10 to each digit except the country
+      code)
+    </dd>
+  </dl>
+</article>
+    </main>
+  </body>
+</html>

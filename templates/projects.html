@@ -1,0 +1,198 @@
+{{header}}
+<article>
+  <h1>Projects I've Done</h1>
+  <p>
+    Sometimes I feel down that I haven't done much. Writing these out has
+    helped.
+  </p>
+  <ul id="tags" class="tags" v-scope="{ tags: allTags() }">
+    <li v-for="tag in tags">{{ tag }}</li>
+  </ul>
+  <ul id="projects">
+    <li>
+      <h2>Issues with Concept Bottleneck Models</h2>
+      <ul class="tags">
+        <li>paper</li>
+        <li>data science</li>
+        <li>python</li>
+      </ul>
+      <img src="images/blackbox.png" alt="Screenshot of the paper PDF" />
+      <p>
+        "Concept learning" is one (limited) approach to trying to get some
+        interpretability into neural network models. Perhaps the most prominent
+        class of models is the "concept bottleneck model". In the XAI workshop
+        for ICML 2021,
+        <a href="https://arxiv.org/abs/2106.13314">we showed</a> that this class
+        of models is fundamentally flawed as a tool for model interpretability
+        without modification. My main contribution was finding this leakage
+        (though I didn't understand the implications of it) and running various
+        experiments to prove the point and show the mechanism. This motivated a
+        <a
+          href="https://proceedings.neurips.cc/paper_files/paper/2022/hash/944ecf65a46feb578a43abfd5cddd960-Abstract-Conference.html"
+          >NeurIPS paper</a
+        >
+        for other folks in the lab (and a couple other NeurIPS papers from other
+        groups)! Plus we were (very minorly) cited by DeepMind in
+        <a href="https://www.pnas.org/doi/abs/10.1073/pnas.2206625119"
+          >their paper</a
+        >
+        on interpreting AlphaZero's chess skills acquisition.
+      </p>
+      <p>
+        I'm proud of this work, but it also kind of soured me on this kind of
+        concept learning. It feels like an interpretability half-measure with no
+        good story for getting to full interpretability. Though concept
+        intervention is cool.
+      </p>
+    </li>
+
+    <li>
+      <h2>Identifying crumbling buildings in Baltimore from aerial photos</h2>
+
+      <ul class="tags">
+        <li>data science</li>
+        <li>software dev</li>
+        <li>policy</li>
+        <li>python</li>
+      </ul>
+      <img
+        src="images/baltimore.png"
+        alt="Aerial photo of crumbling row houses"
+      />
+      <p>
+        As part of the
+        <a href="https://www.dssgfellowship.org/"
+          >Data Science for Social Good</a
+        >
+        fellowship, I worked with the city of Baltimore to detect crumbling
+        residential row homes from aerial photos and tabular city data. I went
+        into the fellowship with a desire to sharpen my problem scoping skills
+        and to see what data science was like in a number of different
+        non-profit contexts. We spent the majority of the time on scoping and
+        understanding the problem. I taught the other two members of my team how
+        neural networks and random forests work, and we used these to create a
+        well performing model that was audited for various fairness metrics.
+        We're working with the city to get it deployed on their infrastructure
+        so they can use and maintain it themselves. XX paper link, XX code link
+        <a href="https://github.com/dssg/baltimore_roofs_public">Repo</a>
+      </p>
+    </li>
+    <li>
+      <h2>Wikipedia traffic analysis for censorship and outage detection</h2>
+
+      <ul class="tags">
+        <li>data science</li>
+        <li>software dev</li>
+        <li>golang</li>
+      </ul>
+      <img
+        src="images/wiki_outage.png"
+        alt="A graphical timeline of web requests with annotated anomalies"
+      />
+      <p>
+        While working on a different project to monitor Internet censorship, I
+        realized that inbound traffic statistics can be used to detect when a
+        website may be inaccessible in a given area. After I wrote and demoed a
+        proof of concept, we worked with the Wikimedia Foundation to deploy it
+        on their internal data. It quickly detected censorship events and
+        natural disasters in numerous countries, and the WMF policy team found
+        it useful enough to have it rewritten and maintained by an internal WMF
+        team.
+      </p>
+    </li>
+    <li>
+      <h2>
+        Internet Monitor AccessCheck &ndash; Real-time world-wide Internet
+        censorship monitoring
+      </h2>
+
+      <ul class="tags">
+        <li>software dev</li>
+        <li>back end</li>
+        <li>front end</li>
+        <li>javascript</li>
+        <li>python</li>
+        <li>multithreading</li>
+      </ul>
+      <img
+        src="images/accesscheck.png"
+        alt="Screenshot of the AccessCheck tool"
+      />
+      <p>
+        This is the largest software project I ever wrote the majority of. As
+        part of a large project from the State Department's Democracy, Human
+        Rights and Labor group, we were tasked with answering the questions of
+        "Which countries are censoring what?" and "How is this changing over
+        time?" To answer these questions, we had to build two things: a synced
+        database of all the results from various groups' Internet censorship
+        research, and a tool for assessing the censorship status of various web
+        services in real time when existing data didn't exist. I successfully
+        built and deployed beta versions of these pieces before the project was
+        ended for other reasons.
+      </p>
+    </li>
+    <li>
+      <h2>
+        Internet Monitor Dashboard &ndash; Getting pretty, useful Internet data
+        in front of policy folks
+      </h2>
+
+      <ul class="tags">
+        <li>software dev</li>
+        <li>visualization</li>
+        <li>front end</li>
+        <li>back end</li>
+        <li>javascript</li>
+      </ul>
+      <img src="images/dashboard.png" alt="Screenshot of the dashboard" />
+      <p>
+        This was a fun one mostly because I got to do all the design (as well as
+        most everything else). For folks that study the Internet, it was thought
+        it would be nice to have a real time dashboard of Internet metrics. I
+        helped write this dashboard from scratch. It consisted of real time data
+        fetching from a bunch of sources, ETL stuff, and real time publishing
+        out to the front end. It was engineered and documented so others could
+        easily contribute new dashboard widgets, and we actually had an intern
+        successfully make a bunch of widgets for us.
+      </p>
+      <p>
+        The project died, but I'm happy with the technical and visual designs I
+        made.
+      </p>
+    </li>
+    <li>
+      <h2>Bias Bounty data science competition entry</h2>
+      <ul class="tags">
+        <li>data science</li>
+        <li>policy</li>
+        <li>python</li>
+      </ul>
+      <img
+        src="images/biasbounty.png"
+        alt="Screenshot of the BiasBounty home page"
+      />
+      <p>
+        Bias Bounty was a short-lived competition idea where people would
+        compete for prizes by finding bias issues in machine learning
+        algorithms. I was pretty excited when Twitter used the bug bounty idea
+        to get feedback on issues with one of their algorithms, so I was pretty
+        jazzed on this concept. The first (and only) competition launched
+        through Bias Bounty ended up being a regular machine learning
+        competition where the goal was to accurately predict perceived age,
+        perceived gender, and skin tone from images of people. It felt fraught,
+        but I competed and spent a few days on it and came in third (and got
+        some money!).
+      </p>
+      <p>
+        There were some real issues with the execution of the concept, so I'm
+        saddened by that because I was rooting for it, but the idea lives on in
+        other things, like the
+        <a
+          href="http://aivillage.org/generative%20red%20team/generative-red-team/"
+          >DEFCON AI Village Red Teaming</a
+        >.
+      </p>
+    </li>
+  </ul>
+</article>
+{{footer}}

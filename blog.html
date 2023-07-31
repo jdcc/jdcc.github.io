@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="/style.css" />
+    <script src="/petite-vue.js" defer init></script>
+    <script>
+      function allTags() {
+        const tagNames = Array.from(
+          new Set(
+            Array.from(document.querySelectorAll(".tags li"))
+              .map((e) => e.innerText)
+              .filter((n) => n[0] != "{") // Don't grab Vue templates
+          )
+        ).sort();
+        return tagNames;
+      }
+    </script>
+  </head>
+  <body>
+    <div id="background">
+      <div id="splash1"></div>
+      <div id="splash2"></div>
+      <div id="splash3"></div>
+      <div id="splash4"></div>
+    </div>
+    <main>
+      <header>
+        <div id="header">
+          <h1>Stuff</h1>
+          <h2>from Justin Chung Clark</h2>
+        </div>
+        <nav>
+          <ul>
+            <li><a href="/index.html">About</a></li>
+            <li><a href="/projects.html">Projects</a></li>
+            <li><a href="/hot_takes.html">Hot Takes</a></li>
+            <li><a href="/blog.html">Blog</a></li>
+            <li><a href="/contact.html">Contact</a></li>
+          </ul>
+        </nav>
+      </header>
+<article>
+  <h1>Blog Posts</h1>
+  <ul id="posts">
+    <li>
+      <a href="posts/next_token_prediction.html">
+        <h3>"It's Just Autocomplete!"</h3>
+        <div class="date">2023-06-09</div>
+        <p>
+          Giving some intuition for why learning to get good at predicting the
+          next token in a sequence can make you good at lots of other tasks.
+        </p>
+      </a>
+    </li>
+  </ul>
+</article>
+    </main>
+  </body>
+</html>

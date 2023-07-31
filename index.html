@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="/style.css" />
+    <script src="/petite-vue.js" defer init></script>
+    <script>
+      function allTags() {
+        const tagNames = Array.from(
+          new Set(
+            Array.from(document.querySelectorAll(".tags li"))
+              .map((e) => e.innerText)
+              .filter((n) => n[0] != "{") // Don't grab Vue templates
+          )
+        ).sort();
+        return tagNames;
+      }
+    </script>
+  </head>
+  <body>
+    <div id="background">
+      <div id="splash1"></div>
+      <div id="splash2"></div>
+      <div id="splash3"></div>
+      <div id="splash4"></div>
+    </div>
+    <main>
+      <header>
+        <div id="header">
+          <h1>Stuff</h1>
+          <h2>from Justin Chung Clark</h2>
+        </div>
+        <nav>
+          <ul>
+            <li><a href="/index.html">About</a></li>
+            <li><a href="/projects.html">Projects</a></li>
+            <li><a href="/hot_takes.html">Hot Takes</a></li>
+            <li><a href="/blog.html">Blog</a></li>
+            <li><a href="/contact.html">Contact</a></li>
+          </ul>
+        </nav>
+      </header>
+<article>
+  <h1>About</h1>
+  <figure id="portrait">
+    <img
+      src="images/pasted image 0.png"
+      alt="Photograph of Justin Chung Clark"
+    />
+    <figcaption>What I looked like one day recently</figcaption>
+  </figure>
+  <p>
+    I'm a fellow human being trying to figure things out. (I like to read this
+    as the implicit first line of everyone's bio.) I'm a tech generalist. I'm a
+    dad. I'm a spouse. I'm a driver. I'm a winner. Things are gonna change, I
+    can
+    <a href="https://youtu.be/YgSPaXgAdzE?t=173" target="_blank">feel it</a>. I
+    know a little about a lot, but a lot about very little.
+  </p>
+  <p>
+    I like to work on things that I think have a real chance of being beneficial
+    to society. I'm not interested in technosolutionism, but I am interested in
+    tech-as-part-of-the-solutionism. I have a lot of different skills I've
+    picked up over the years, but the ones I emjoy using the most are building
+    and trying to interpret ML models, visualization, and software engineering.
+    With that said, I don't enjoy sitting in front of the computer all day and I
+    deeply wish there were other (practical) ways of engaging with these
+    technologies.
+  </p>
+</article>
+    </main>
+  </body>
+</html>

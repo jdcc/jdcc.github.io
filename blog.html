@@ -2,17 +2,45 @@
 <html>
   <head>
     <link rel="stylesheet" href="/style.css" />
-    <script src="/petite-vue.js" defer init></script>
+    <script type="module">
+      import { createApp, reactive } from '/petite-vue.es.js'
+      const state = reactive({
+        tags: [],
+        isActiveTag(tag) {
+          const tags = new Set(this.tags);
+          return tags.has(tag);
+        },
+        toggleTag(e) {
+          const tag = e.target.innerText.trim(),
+                tags = new Set(this.tags);
+          if (tags.has(tag)) {
+            tags.delete(tag);
+          } else {
+            tags.add(tag);
+          }
+          this.tags = Array.from(tags);
+        },
+        shouldShowProject(el) {
+          if (this.tags.length === 0) { return true };
+          const tags = new Set(projectTags(el));
+          return this.tags.some(t => tags.has(t));
+        }
+      });
+      createApp({state}).mount();
+    </script>
     <script>
       function allTags() {
         const tagNames = Array.from(
           new Set(
             Array.from(document.querySelectorAll(".tags li"))
               .map((e) => e.innerText)
-              .filter((n) => n[0] != "{") // Don't grab Vue templates
+              .filter((n) => !n.includes('{{')) // Don't grab Vue templates
           )
         ).sort();
         return tagNames;
+      }
+      function projectTags(el) {
+        return Array.from(el.querySelectorAll('.tags li')).map(f => f.innerText.trim())
       }
     </script>
   </head>

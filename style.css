@@ -176,8 +176,15 @@ nav a {
   font-size: 0.9em;
   border-radius: 3px;
 }
+.tags li.active {
+  background: #6168b0;
+  color: white;
+}
 .tags li::before {
   content: "#";
+}
+#tags li {
+  cursor: pointer;
 }
 
 code {

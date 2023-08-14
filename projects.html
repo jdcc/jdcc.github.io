@@ -2,17 +2,45 @@
 <html>
   <head>
     <link rel="stylesheet" href="/style.css" />
-    <script src="/petite-vue.js" defer init></script>
+    <script type="module">
+      import { createApp, reactive } from '/petite-vue.es.js'
+      const state = reactive({
+        tags: [],
+        isActiveTag(tag) {
+          const tags = new Set(this.tags);
+          return tags.has(tag);
+        },
+        toggleTag(e) {
+          const tag = e.target.innerText.trim(),
+                tags = new Set(this.tags);
+          if (tags.has(tag)) {
+            tags.delete(tag);
+          } else {
+            tags.add(tag);
+          }
+          this.tags = Array.from(tags);
+        },
+        shouldShowProject(el) {
+          if (this.tags.length === 0) { return true };
+          const tags = new Set(projectTags(el));
+          return this.tags.some(t => tags.has(t));
+        }
+      });
+      createApp({state}).mount();
+    </script>
     <script>
       function allTags() {
         const tagNames = Array.from(
           new Set(
             Array.from(document.querySelectorAll(".tags li"))
               .map((e) => e.innerText)
-              .filter((n) => n[0] != "{") // Don't grab Vue templates
+              .filter((n) => !n.includes('{{')) // Don't grab Vue templates
           )
         ).sort();
         return tagNames;
+      }
+      function projectTags(el) {
+        return Array.from(el.querySelectorAll('.tags li')).map(f => f.innerText.trim())
       }
     </script>
   </head>
@@ -39,17 +67,23 @@
           </ul>
         </nav>
       </header>
-<article>
+<article v-scope="{ tags: allTags() }">
   <h1>Projects I've Done</h1>
   <p>
     Sometimes I feel down that I haven't done much. Writing these out has
     helped.
   </p>
-  <ul id="tags" class="tags" v-scope="{ tags: allTags() }">
-    <li v-for="tag in tags">{{ tag }}</li>
+  <ul id="tags" class="tags">
+    <li
+      v-for="tag in tags"
+      @click="state.toggleTag"
+      :class="{ active: state.isActiveTag(tag) }"
+    >
+      {{ tag }}
+    </li>
   </ul>
   <ul id="projects">
-    <li>
+    <li v-show="state.shouldShowProject($el)">
       <h2>Issues with Concept Bottleneck Models</h2>
       <ul class="tags">
         <li>paper</li>
@@ -86,7 +120,7 @@
       </p>
     </li>
 
-    <li>
+    <li v-show="state.shouldShowProject($el)">
       <h2>Identifying crumbling buildings in Baltimore from aerial photos</h2>
 
       <ul class="tags">
@@ -113,11 +147,14 @@
         neural networks and random forests work, and we used these to create a
         well performing model that was audited for various fairness metrics.
         We're working with the city to get it deployed on their infrastructure
-        so they can use and maintain it themselves. XX paper link, XX code link
-        <a href="https://github.com/dssg/baltimore_roofs_public">Repo</a>
+        so they can use and maintain it themselves. The working version is
+        private, but there's a
+        <a href="https://github.com/dssg/baltimore_roofs_public"
+          >public version of the code</a
+        >.
       </p>
     </li>
-    <li>
+    <li v-show="state.shouldShowProject($el)">
       <h2>Wikipedia traffic analysis for censorship and outage detection</h2>
 
       <ul class="tags">
@@ -136,11 +173,16 @@
         proof of concept, we worked with the Wikimedia Foundation to deploy it
         on their internal data. It quickly detected censorship events and
         natural disasters in numerous countries, and the WMF policy team found
-        it useful enough to have it rewritten and maintained by an internal WMF
-        team.
+        it useful enough to have it
+        <a href="https://phabricator.wikimedia.org/T215379">rewritten</a> and
+        <a
+          href="https://gerrit.wikimedia.org/r/c/analytics/refinery/source/+/561674/"
+          >maintained</a
+        >
+        by an internal WMF team.
       </p>
     </li>
-    <li>
+    <li v-show="state.shouldShowProject($el)">
       <h2>
         Internet Monitor AccessCheck &ndash; Real-time world-wide Internet
         censorship monitoring
@@ -171,7 +213,7 @@
         ended for other reasons.
       </p>
     </li>
-    <li>
+    <li v-show="state.shouldShowProject($el)">
       <h2>
         Internet Monitor Dashboard &ndash; Getting pretty, useful Internet data
         in front of policy folks
@@ -200,7 +242,7 @@
         made.
       </p>
     </li>
-    <li>
+    <li v-show="state.shouldShowProject($el)">
       <h2>Bias Bounty data science competition entry</h2>
       <ul class="tags">
         <li>data science</li>

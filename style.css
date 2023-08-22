@@ -249,3 +249,39 @@ dt {
 dd {
   margin-bottom: 5px;
 }
+
+blockquote {
+  border-left: 4px solid rgba(0, 0, 0, 0.1);
+  background: white;
+  padding: 1em 2em;
+  position: relative;
+}
+blockquote .source {
+  position: absolute;
+  right: 1em;
+  bottom: 0.5em;
+  font-size: 0.7em;
+}
+.chatgpt {
+  border: 1px solid rgba(0,0,0,.1);
+  padding: 0;
+}
+.chatgpt p {
+  border-bottom: 1px solid rgba(0,0,0,.1);
+  padding: 1em 2em;
+  margin: 0;
+}
+.chat-bot {
+  background-color: rgba(247,247,248,1.0);
+}
+.chat-bot::before {
+  content: "Bot: ";
+  color: #999;
+}
+.chat-me {
+  background-color: white;
+}
+.chat-me::before {
+  content: "Me: ";
+  color: #999;
+}
